@@ -1,0 +1,35 @@
+<!-- (Copied from Logback documentation)
+ Specifying the location of the default configuration file as a system property:
+
+You may specify the location of the default configuration file with a system property named "logback.configurationFile".
+The value of this property can be a URL, a resource on the class path or a path to a file external to the application.
+
+java -Dlogback.configurationFile=/path/to/config.xml chapters.configuration.MyApp1
+
+Note that the file extension must be ".xml" or ".groovy". Other extensions are ignored.
+-->
+<configuration>
+
+    <appender name="FILE-DEFAULT" class="ch.qos.logback.core.FileAppender">
+        <file>/Users/Sohamgh/motech.log</file>
+        <encoder>
+            <pattern>%date %level [%thread] %logger{10} [%file:%line] %msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <appender name="FILE-LS-SPIKE" class="ch.qos.logback.core.FileAppender">
+        <file>/Users/Sohamgh/logservicespike.log</file>
+        <encoder>
+            <pattern>%date %level [%thread] %logger{10} [%file:%line] %msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <logger name="spike-log-service-test" level="DEBUG">
+        <appender-ref ref="FILE-LS-SPIKE"/>
+    </logger>
+
+    <root level="error">
+        <appender-ref ref="FILE-DEFAULT"/>
+    </root>
+
+</configuration>
