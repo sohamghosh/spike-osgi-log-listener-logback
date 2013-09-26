@@ -15,9 +15,6 @@ public class LogbackLogListener implements LogListener {
     @Override
     public void logged(LogEntry entry) {
         final String symbolicName = entry.getBundle().getSymbolicName();
-        if (!"spike-log-service-test".equals(symbolicName)) {
-            return;
-        }
         // Cache
         Logger logger = LoggerFactory.getLogger(symbolicName);
 
